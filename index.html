@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NMMS ప్రాక్టీస్ – MAT & SAT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@600;800&family=Noto+Sans+Telugu:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFBF6; --ink:#1F3B6E; --rule:#D7E2F0; --form:#B23A48;
+  --lead:#2A2D34; --ok:#2F7D4A; --bad:#B3261E; --soft:#EEF3FA;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--lead);font-family:'Noto Sans Telugu',system-ui,sans-serif;line-height:1.65;font-size:17px;padding-bottom:env(safe-area-inset-bottom,0px)}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--form);outline-offset:2px}
+.top{background:var(--ink);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
+.top .brand{font-family:'Baloo Tamma 2',sans-serif;font-weight:800;font-size:20px;flex:1;letter-spacing:.2px}
+.top button{background:transparent;border:1.5px solid rgba(255,255,255,.55);color:#fff;border-radius:8px;padding:5px 11px;font-size:15px}
+.top button.on{background:#fff;color:var(--ink)}
+.marks{height:9px;background:repeating-linear-gradient(90deg,var(--lead) 0 12px,transparent 12px 28px);opacity:.85}
+.wrap{max-width:760px;margin:0 auto;padding:18px 16px 30px}
+h1{font-family:'Baloo Tamma 2',sans-serif;font-weight:800;font-size:clamp(34px,8vw,52px);line-height:1.05;margin:8px 0 6px;color:var(--ink)}
+h2{font-family:'Baloo Tamma 2',sans-serif;font-size:24px;margin:0 0 8px;color:var(--ink)}
+h3{font-size:16px;margin:0 0 8px;color:var(--ink)}
+.lede{margin:0 0 16px;max-width:60ch}
+.pattern{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--form);border-radius:10px;overflow:hidden;background:#fff;margin-bottom:18px}
+.pattern div{padding:10px 8px;text-align:center;border-right:1px solid var(--rule)}
+.pattern div:last-child{border-right:0}
+.pattern b{display:block;font-family:'Baloo Tamma 2',sans-serif;font-size:26px;color:var(--form);line-height:1.1}
+.pattern span{font-size:13px}
+.note{font-size:14px;color:#555;margin:-8px 0 18px}
+.panel{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:16px;margin-bottom:16px}
+.grp{margin-bottom:16px}
+.grp:last-child{margin-bottom:0}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{border:1.5px solid var(--rule);background:#fff;color:var(--lead);border-radius:999px;padding:7px 14px;font-size:15px}
+.seg button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.seg button:disabled{opacity:.4;cursor:not-allowed}
+.hint{font-size:14px;color:#555;margin:8px 0 0}
+.fld{display:block;font-size:15px;font-weight:500;color:var(--ink);margin-bottom:16px}
+.fld input{display:block;width:100%;margin-top:6px;padding:10px 12px;border:1.5px solid var(--rule);border-radius:10px;font:inherit;background:var(--paper)}
+.pri{background:var(--form);color:#fff;border:0;border-radius:12px;padding:12px 22px;font-weight:700;font-size:17px}
+.pri.wide{width:100%;padding:15px;font-size:19px}
+.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--ink);border-radius:12px;padding:11px 18px;font-weight:500}
+.ghost:disabled{opacity:.35;cursor:not-allowed}
+.resume{display:flex;align-items:center;gap:12px;justify-content:space-between;background:var(--soft);border:1.5px dashed var(--ink);border-radius:14px;padding:14px 16px;margin-bottom:16px;flex-wrap:wrap}
+.hist{list-style:none;margin:0;padding:0}
+.hist li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.hist li:last-child{border-bottom:0}
+.hist .p{font-weight:700}
+.qbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.qbar .no{font-size:16px}
+.qbar .no b{font-family:'Baloo Tamma 2',sans-serif;font-size:24px;color:var(--ink)}
+.tag{background:var(--soft);color:var(--ink);border-radius:6px;padding:2px 10px;font-size:14px}
+.timer{margin-left:auto;font-family:'Baloo Tamma 2',sans-serif;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+.timer.low{color:var(--bad)}
+.live{margin-left:auto;font-size:15px}
+.prog{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin-bottom:14px}
+.prog i{display:block;height:100%;background:var(--ink)}
+.qcard{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--form);border-radius:12px;padding:18px 16px}
+.qtext{font-size:19px;font-weight:500;white-space:pre-line;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;background:#fff;border:1.5px solid var(--rule);border-radius:10px;padding:11px 12px;color:var(--lead);font-size:17px}
+.opt:hover{border-color:var(--ink)}
+.bub{flex:none;width:32px;height:32px;border-radius:50%;border:2px solid var(--form);color:var(--form);display:grid;place-items:center;font-weight:700;font-size:14px;font-family:system-ui,sans-serif;transition:background .15s}
+.opt.sel{border-color:var(--lead)}
+.opt.sel .bub{background:var(--lead);border-color:var(--lead);color:#fff}
+.opt.right{border-color:var(--ok);background:#EEF7F0}
+.opt.right .bub{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:#FBEDEC}
+.opt.wrong .bub{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.dim{opacity:.6}
+.expl{margin-top:14px;border-radius:10px;padding:12px 14px;font-size:16px}
+.expl.ok{background:#EEF7F0;border:1px solid #BFDCC8}
+.expl.bad{background:#FBEDEC;border:1px solid #EBC3BF}
+.expl p{margin:4px 0 0}
+.navb{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+.endnow{display:block;margin:14px auto 0;background:none;border:0;color:var(--ink);text-decoration:underline;font-size:15px}
+.sheet{margin-top:18px;background:#fff;border:1.5px solid var(--form);border-radius:12px;padding:12px 14px}
+.sheet summary{font-weight:700;color:var(--form);cursor:pointer}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:7px;margin:12px 0}
+.pal button{aspect-ratio:1;border-radius:50%;border:1.5px solid var(--form);background:#fff;color:var(--form);font-size:13px;padding:0;font-family:system-ui,sans-serif}
+.pal button.f{background:var(--lead);border-color:var(--lead);color:#fff}
+.pal button.c{outline:3px solid var(--ink);outline-offset:2px}
+.legend{font-size:13px;color:#555;margin:0 0 10px}
+.score{text-align:center;padding:10px 0 4px}
+.score .big{font-family:'Baloo Tamma 2',sans-serif;font-weight:800;font-size:clamp(56px,16vw,84px);line-height:1;color:var(--ink)}
+.score .big small{font-size:.4em;color:var(--lead)}
+.verdict{text-align:center;font-weight:700;border-radius:10px;padding:10px;margin:12px 0 0}
+.verdict.ok{background:#EEF7F0;color:var(--ok)}
+.verdict.bad{background:#FBEDEC;color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--rule);text-align:left}
+th{color:var(--ink);font-weight:700}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.parts div{background:var(--soft);border-radius:10px;padding:8px;text-align:center;font-size:14px}
+.parts b{display:block;font-size:20px;color:var(--ink)}
+.rv{border-bottom:1px solid var(--rule);padding:12px 0}
+.rv:last-child{border-bottom:0}
+.rv .q{font-weight:500;white-space:pre-line;margin:0 0 6px}
+.rv .a{font-size:15px;margin:2px 0}
+.rv .e{font-size:14px;color:#444;margin:4px 0 0}
+.g{color:var(--ok);font-weight:700}.r{color:var(--bad);font-weight:700}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+footer{text-align:center;padding:18px 16px 26px;font-size:15px;border-top:1px solid var(--rule);margin-top:10px}
+footer a{color:var(--form);font-weight:700;text-decoration:none;font-family:'Baloo Tamma 2',sans-serif;font-size:19px}
+footer a:hover{text-decoration:underline}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{.top,.marks,footer .no-print,.btns{display:none}}
+</style>
+</head>
+<body>
+<div class="top">
+  <span class="brand">NMMS ప్రాక్టీస్</span>
+  <button id="ttsBtn" aria-pressed="false" title="తెలుగు వాయిస్">🔊 వాయిస్</button>
+  <button id="homeBtn">హోమ్</button>
+</div>
+<div class="marks" aria-hidden="true"></div>
+<main class="wrap" id="app"></main>
+<footer>తయారీ: <a href="https://raayeducation.in" target="_blank" rel="noopener">రాయ్ ఎడ్యుకేషన్</a></footer>
+
+<script>
+/* ================= ప్రశ్నల బ్యాంకు (స్థిర ప్రశ్నలు) ================= */
+const BANK=[
+// ---------- MAT ----------
+['mat','రాము తండ్రి సోదరి రాముకు ఏమవుతుంది?',['అత్త','పిన్ని','అక్క','వదిన'],0,'తండ్రి సోదరి = అత్త.'],
+['mat','ఒక స్త్రీ ఫోటోలోని అబ్బాయిని చూపిస్తూ "ఇతని తల్లి, నా తల్లికి ఏకైక కుమార్తె" అన్నది. ఆ స్త్రీ ఆ అబ్బాయికి ఏమవుతుంది?',['తల్లి','అక్క','అత్త','అమ్మమ్మ'],0,'"నా తల్లికి ఏకైక కుమార్తె" అంటే ఆ స్త్రీయే. కాబట్టి ఆమె అబ్బాయికి తల్లి.'],
+['mat','పుస్తకం : రచయిత :: చిత్రం : ?',['చిత్రకారుడు','కవి','శిల్పి','గాయకుడు'],0,'పుస్తకాన్ని రచయిత రాస్తాడు; చిత్రాన్ని చిత్రకారుడు గీస్తాడు.'],
+['mat','కన్ను : చూపు :: చెవి : ?',['వినికిడి','వాసన','రుచి','స్పర్శ'],0,'కంటి పని చూపు; చెవి పని వినికిడి.'],
+['mat','కింది వాటిలో భిన్నమైనది ఏది?',['మామిడి','గులాబీ','మల్లె','తామర'],0,'గులాబీ, మల్లె, తామర పువ్వులు; మామిడి పండు.'],
+['mat','కింది వాటిలో భిన్నమైనది ఏది?',['వృత్తం','త్రిభుజం','చతురస్రం','పంచభుజి'],0,'మిగిలినవి సరళరేఖా భుజాలు గల పటాలు; వృత్తానికి భుజాలు లేవు.'],
+['mat','అద్దంలో గడియారం 3:00 చూపిస్తుంటే అసలు సమయం ఎంత?',['9:00','3:00','6:00','12:00'],0,'అసలు సమయం = 12:00 − 3:00 = 9:00.'],
+['mat','A, B కంటే పొడవు. C, A కంటే పొడవు. D, B కంటే పొట్టి. అందరిలో పొడవైనవారు ఎవరు?',['C','A','B','D'],0,'క్రమం: C > A > B > D.'],
+['mat','సాధారణ పాచికలో ఎదురెదురు ముఖాలపై ఉన్న సంఖ్యల మొత్తం ఎంత?',['7','6','8','12'],0,'1–6, 2–5, 3–4 ఎదురెదురుగా ఉంటాయి; మొత్తం 7.'],
+['mat','"+" అంటే "×", "×" అంటే "+" అయితే 4 + 3 × 2 విలువ?',['14','10','24','20'],0,'మార్చగా 4 × 3 + 2 = 12 + 2 = 14.'],
+['mat','పాదం : చెప్పు :: తల : ?',['టోపీ','దువ్వెన','జుట్టు','కళ్ళజోడు'],0,'చెప్పు పాదాన్ని కప్పుతుంది; టోపీ తలను కప్పుతుంది.'],
+['mat','కింది వాటిలో భిన్నమైనది ఏది?',['పాము','ఆవు','గేదె','మేక'],0,'ఆవు, గేదె, మేక పాలిచ్చే క్షీరదాలు; పాము సరీసృపం.'],
+['mat','నిఘంటువు క్రమంలో మొదట వచ్చే పదం?',['BRAIN','BREAD','BRICK','BROWN'],0,'మూడో అక్షరం చూడండి: A < E < I < O.'],
+['mat','ఒక తరగతిలో 40 మంది ఉన్నారు. సీత పై నుండి 15వ ర్యాంకు. కింద నుండి ఆమె ర్యాంకు ఎంత?',['26','25','24','27'],0,'40 − 15 + 1 = 26.'],
+['mat','నీరు : దాహం :: ఆహారం : ?',['ఆకలి','రుచి','వంట','శక్తి'],0,'దాహం నీటితో తీరుతుంది; ఆకలి ఆహారంతో తీరుతుంది.'],
+['mat','5 పెన్నుల ధర ₹60 అయితే 8 పెన్నుల ధర ఎంత?',['₹96','₹80','₹90','₹100'],0,'ఒక పెన్ను ₹12; 8 × 12 = ₹96.'],
+// ---------- భౌతిక శాస్త్రం ----------
+['phy','బలానికి SI ప్రమాణం ఏది?',['న్యూటన్','జౌల్','వాట్','పాస్కల్'],0,'బలం – న్యూటన్. జౌల్ పనికి, వాట్ సామర్థ్యానికి, పాస్కల్ పీడనానికి ప్రమాణాలు.'],
+['phy','పీడనం = ?',['బలం ÷ వైశాల్యం','బలం × వైశాల్యం','ద్రవ్యరాశి ÷ ఘనపరిమాణం','దూరం ÷ కాలం'],0,'ప్రమాణ వైశాల్యంపై పనిచేసే లంబ బలమే పీడనం: P = F/A.'],
+['phy','ఘర్షణ బలం ఎప్పుడూ ఏ దిశలో పనిచేస్తుంది?',['చలనానికి వ్యతిరేక దిశలో','చలన దిశలో','పైకి','లంబంగా కిందికి'],0,'ఘర్షణ రెండు తలాల మధ్య సాపేక్ష చలనాన్ని వ్యతిరేకిస్తుంది.'],
+['phy','ధ్వని కింది వాటిలో దేని ద్వారా ప్రయాణించలేదు?',['శూన్యం','గాలి','నీరు','ఇనుము'],0,'ధ్వని ప్రయాణానికి యానకం అవసరం; శూన్యంలో యానకం లేదు.'],
+['phy','పౌనఃపున్యానికి ప్రమాణం ఏది?',['హెర్ట్జ్ (Hz)','డెసిబెల్ (dB)','మీటర్','సెకను'],0,'ఒక సెకనులో జరిగే కంపనాల సంఖ్యే పౌనఃపున్యం; ప్రమాణం హెర్ట్జ్.'],
+['phy','మానవుడు వినగలిగే ధ్వని పౌనఃపున్య అవధి?',['20 Hz – 20,000 Hz','2 Hz – 200 Hz','200 Hz – 2,00,000 Hz','20,000 Hz పైన మాత్రమే'],0,'20 Hz కంటే తక్కువ – అవశ్రావ్యాలు; 20,000 Hz కంటే ఎక్కువ – అతిధ్వనులు.'],
+['phy','పతన కోణం 35° అయితే పరావర్తన కోణం ఎంత?',['35°','55°','70°','90°'],0,'పరావర్తన నియమం: పతన కోణం = పరావర్తన కోణం.'],
+['phy','సమతల దర్పణంలో ఏర్పడే ప్రతిబింబం ఎలా ఉంటుంది?',['మిథ్యా, నిటారు, వస్తువు పరిమాణంలో','నిజ, తలకిందులు, చిన్నది','నిజ, నిటారు, పెద్దది','మిథ్యా, తలకిందులు, చిన్నది'],0,'సమతల దర్పణ ప్రతిబింబం మిథ్యా, నిటారు, సమాన పరిమాణం; పార్శ్వ విలోమం చెందుతుంది.'],
+['phy','ఒక వాహనం 20 సెకన్లలో 100 మీటర్లు ప్రయాణిస్తే దాని వడి?',['5 మీ/సె','2 మీ/సె','20 మీ/సె','2000 మీ/సె'],0,'వడి = దూరం ÷ కాలం = 100 ÷ 20 = 5 మీ/సె.'],
+['phy','విద్యుత్ ప్రవాహానికి SI ప్రమాణం?',['ఆంపియర్','వోల్ట్','ఓమ్','వాట్'],0,'విద్యుత్ ప్రవాహం – ఆంపియర్; పొటెన్షియల్ భేదం – వోల్ట్; నిరోధం – ఓమ్.'],
+['phy','విద్యుత్ ఉష్ణ ఫలితంపై ఆధారపడి పనిచేసే పరికరం?',['విద్యుత్ ఇస్త్రీ పెట్టె','విద్యుత్ గంట','దిక్సూచి','విద్యుదయస్కాంత క్రేన్'],0,'ఇస్త్రీ పెట్టెలో తీగ గుండా విద్యుత్ ప్రవహించినప్పుడు ఉష్ణం పుడుతుంది.'],
+['phy','ఎత్తైన భవనాలను పిడుగుల నుండి రక్షించేది?',['తటిత్ వాహకం','ఫ్యూజ్','విద్యుద్దర్శిని','సౌర ఫలకం'],0,'తటిత్ వాహకం విద్యుత్ ఆవేశాన్ని సురక్షితంగా భూమిలోకి పంపుతుంది.'],
+['phy','ద్రవంలో లోతు పెరిగే కొద్దీ పీడనం?',['పెరుగుతుంది','తగ్గుతుంది','మారదు','సున్నా అవుతుంది'],0,'ద్రవ పీడనం లోతుతో పెరుగుతుంది; అందుకే ఆనకట్టల అడుగు భాగం వెడల్పుగా ఉంటుంది.'],
+// ---------- రసాయన శాస్త్రం ----------
+['che','నిమ్మరసంలో ఉండే ఆమ్లం?',['సిట్రిక్ ఆమ్లం','లాక్టిక్ ఆమ్లం','టార్టారిక్ ఆమ్లం','ఎసిటిక్ ఆమ్లం'],0,'నిమ్మ, నారింజ వంటి పుల్లని పండ్లలో సిట్రిక్ ఆమ్లం ఉంటుంది.'],
+['che','పసుపు సూచికను క్షారంలో వేస్తే ఏ రంగుకు మారుతుంది?',['ఎరుపు','నీలం','ఆకుపచ్చ','రంగు మారదు'],0,'పసుపు క్షారాలతో ఎరుపు రంగుకు మారుతుంది; ఆమ్లాలతో మారదు.'],
+['che','నీలి లిట్మస్ కాగితం ఆమ్లంలో ఏ రంగుకు మారుతుంది?',['ఎరుపు','పసుపు','నీలంగానే ఉంటుంది','ఆకుపచ్చ'],0,'ఆమ్లాలు నీలి లిట్మస్‌ను ఎరుపుగా మారుస్తాయి.'],
+['che','ఆమ్లం, క్షారం చర్య జరిపి లవణం, నీరు ఏర్పడే చర్యను ఏమంటారు?',['తటస్థీకరణం','దహనం','స్ఫటికీకరణం','తుప్పు పట్టడం'],0,'ఆమ్లం + క్షారం → లవణం + నీరు (+ ఉష్ణం): తటస్థీకరణ చర్య.'],
+['che','ఇనుము తుప్పు పట్టడానికి అవసరమైనవి?',['ఆక్సిజన్, తేమ','నైట్రోజన్, తేమ','కేవలం ఆక్సిజన్','కార్బన్ డయాక్సైడ్ మాత్రమే'],0,'ఆక్సిజన్, నీరు (తేమ) రెండూ ఉంటేనే ఇనుము తుప్పు పడుతుంది.'],
+['che','ఇనుముపై జింక్ పూత వేయడాన్ని ఏమంటారు?',['గాల్వనీకరణం','స్ఫటికీకరణం','స్వేదనం','ఉత్పతనం'],0,'జింక్ పూత ఇనుమును తుప్పు నుండి కాపాడుతుంది – గాల్వనీకరణం.'],
+['che','పెట్రోలియంను "నల్ల బంగారం" అని ఎందుకు అంటారు?',['దాని నుండి ఎన్నో విలువైన పదార్థాలు లభిస్తాయి','అందులో బంగారం ఉంటుంది','అది సులభంగా దొరుకుతుంది','అది మండదు'],0,'పెట్రోల్, డీజిల్, కిరోసిన్, మైనం వంటి ఎన్నో విలువైన ఉత్పత్తులు లభిస్తాయి.'],
+['che','LPG లో ప్రధానంగా ఉండే వాయువు?',['బ్యూటేన్','మీథేన్','హైడ్రోజన్','ఆక్సిజన్'],0,'LPG లో ప్రధానంగా బ్యూటేన్; CNG లో ప్రధానంగా మీథేన్.'],
+['che','దహనానికి తోడ్పడే వాయువు?',['ఆక్సిజన్','నైట్రోజన్','కార్బన్ డయాక్సైడ్','హీలియం'],0,'ఆక్సిజన్ దహన దోహదకారి; CO₂ మంటలను ఆర్పుతుంది.'],
+['che','కింది వాటిలో అలోహం ఏది?',['సల్ఫర్','రాగి','ఇనుము','అల్యూమినియం'],0,'సల్ఫర్ (గంధకం) అలోహం; మిగిలినవి లోహాలు.'],
+['che','మైలుతుత్తం (నీలి స్ఫటికాలు) రసాయన నామం?',['కాపర్ సల్ఫేట్','సోడియం క్లోరైడ్','కాల్షియం కార్బోనేట్','ఫెర్రస్ సల్ఫేట్'],0,'మైలుతుత్తం = కాపర్ సల్ఫేట్.'],
+['che','కింది వాటిలో భౌతిక మార్పు ఏది?',['మంచు కరగడం','కాగితం కాలడం','ఇనుము తుప్పు పట్టడం','పాలు పెరుగుగా మారడం'],0,'మంచు కరగడంలో కొత్త పదార్థం ఏర్పడదు; నీటిని మళ్ళీ మంచుగా మార్చవచ్చు.'],
+['che','కొవ్వొత్తి మంటలో అత్యంత వేడిగా ఉండే భాగం?',['బయటి నీలి మండలం','మధ్య పసుపు మండలం','లోపలి నల్లని మండలం','వత్తి'],0,'బయటి మండలంలో సంపూర్ణ దహనం జరుగుతుంది; అదే అత్యంత వేడి భాగం.'],
+// ---------- జీవ శాస్త్రం ----------
+['bio','కిరణజన్య సంయోగక్రియ జరిగే కణాంగం?',['హరితరేణువు','మైటోకాండ్రియా','కేంద్రకం','రిక్తిక'],0,'హరితరేణువులోని పత్రహరితం సూర్యకాంతిని గ్రహిస్తుంది.'],
+['bio','కణం యొక్క "శక్తి కేంద్రం" అని దేనిని అంటారు?',['మైటోకాండ్రియా','రైబోజోమ్','గాల్జీ సంక్లిష్టం','లైసోజోమ్'],0,'మైటోకాండ్రియాలో శ్వాసక్రియ ద్వారా శక్తి విడుదలవుతుంది.'],
+['bio','జంతు కణంలో లేనిది ఏది?',['కణకవచం','కణత్వచం','కేంద్రకం','మైటోకాండ్రియా'],0,'కణకవచం మొక్క కణాల్లో మాత్రమే ఉంటుంది.'],
+['bio','మానవ శరీరంలో అతి పెద్ద గ్రంథి?',['కాలేయం','క్లోమం','థైరాయిడ్','లాలాజల గ్రంథి'],0,'కాలేయం అతి పెద్ద గ్రంథి; పైత్యరసాన్ని ఉత్పత్తి చేస్తుంది.'],
+['bio','లాలాజలం ఏ ఆహార పదార్థాన్ని జీర్ణం చేయడం ప్రారంభిస్తుంది?',['పిండి పదార్థం','ప్రొటీన్','కొవ్వు','విటమిన్'],0,'లాలాజలంలోని ఎంజైమ్ పిండి పదార్థాన్ని చక్కెరగా మారుస్తుంది.'],
+['bio','పరాన్నజీవి మొక్కకు ఉదాహరణ?',['కస్కుటా (బంగారు తీగ)','కూజా మొక్క','మామిడి','వరి'],0,'కస్కుటా ఆతిథేయ మొక్క నుండి ఆహారాన్ని గ్రహిస్తుంది.'],
+['bio','కీటకాహార మొక్కకు ఉదాహరణ?',['కూజా మొక్క','కస్కుటా','పుట్టగొడుగు','తులసి'],0,'కూజా మొక్క కీటకాలను పట్టి నత్రజనిని పొందుతుంది.'],
+['bio','విటమిన్ C లోపం వల్ల కలిగే వ్యాధి?',['స్కర్వీ','రేచీకటి','రికెట్స్','బెరిబెరి'],0,'C – స్కర్వీ; A – రేచీకటి; D – రికెట్స్; B₁ – బెరిబెరి.'],
+['bio','మలేరియాను వ్యాపింపజేసేది?',['ఆడ అనాఫిలిస్ దోమ','ఆడ ఏడిస్ దోమ','ఈగ','బొద్దింక'],0,'మలేరియా ప్లాస్మోడియం వల్ల వస్తుంది; ఆడ అనాఫిలిస్ దోమ వ్యాపింపజేస్తుంది.'],
+['bio','మానవ హృదయంలో ఎన్ని గదులు ఉంటాయి?',['4','2','3','6'],0,'రెండు కర్ణికలు, రెండు జఠరికలు – మొత్తం 4.'],
+['bio','కింది వాటిలో శిలీంధ్రం ఏది?',['పుట్టగొడుగు','శైవలం','అమీబా','బ్యాక్టీరియా'],0,'పుట్టగొడుగు, బూజు, ఈస్ట్ శిలీంధ్రాలు.'],
+['bio','రక్తానికి ఎరుపు రంగు ఇచ్చేది?',['హిమోగ్లోబిన్','ప్లాస్మా','తెల్ల రక్త కణాలు','రక్త ఫలకికలు'],0,'ఎర్ర రక్త కణాల్లోని హిమోగ్లోబిన్ ఆక్సిజన్‌ను రవాణా చేస్తుంది.'],
+['bio','పోలియో వ్యాధి కారకం?',['వైరస్','బ్యాక్టీరియా','శిలీంధ్రం','ప్రోటోజోవా'],0,'పోలియో వైరస్ వల్ల వస్తుంది; నివారణకు పోలియో చుక్కలు.'],
+['bio','పాలను పెరుగుగా మార్చే సూక్ష్మజీవి?',['లాక్టోబాసిల్లస్','ఈస్ట్','ప్లాస్మోడియం','వైరస్'],0,'లాక్టోబాసిల్లస్ బ్యాక్టీరియా పాలను పెరుగుగా మారుస్తుంది.'],
+// ---------- గణితం ----------
+['mth','a = 2, b = 3 అయితే a² + b² విలువ?',['13','10','25','12'],0,'4 + 9 = 13.'],
+['mth','త్రిభుజంలోని మూడు కోణాల మొత్తం?',['180°','90°','360°','270°'],0,'త్రిభుజ కోణాల మొత్తం ఎల్లప్పుడూ 180°.'],
+['mth','వ్యాసం 14 సెం.మీ గల వృత్తం చుట్టుకొలత? (π = 22/7)',['44 సెం.మీ','22 సెం.మీ','88 సెం.మీ','154 సెం.మీ'],0,'చుట్టుకొలత = πd = 22/7 × 14 = 44 సెం.మీ.'],
+['mth','2³ × 2² = ?',['32','64','16','10'],0,'aᵐ × aⁿ = aᵐ⁺ⁿ → 2⁵ = 32.'],
+['mth','(a + b)² = ?',['a² + 2ab + b²','a² + b²','a² − 2ab + b²','a² + ab + b²'],0,'ఇది ప్రామాణిక సర్వసమీకరణం.'],
+['mth','సమాంతర చతుర్భుజంలో ఎదురెదురు కోణాలు?',['సమానం','పూరక కోణాలు','ఎల్లప్పుడూ 90°','ఎల్లప్పుడూ 60°'],0,'సమాంతర చతుర్భుజంలో ఎదురెదురు భుజాలు, ఎదురెదురు కోణాలు సమానం.'],
+['mth','సమబాహు త్రిభుజంలో ప్రతి కోణం?',['60°','90°','45°','30°'],0,'180° ÷ 3 = 60°.'],
+['mth','3/4 + 1/4 = ?',['1','4/8','3/16','1/2'],0,'హారాలు సమానం: (3 + 1)/4 = 1.'],
+['mth','కింది వాటిలో అకరణీయ సంఖ్య కానిది?',['√2','3/5','−7','0.25'],0,'√2 ను p/q రూపంలో రాయలేము; అది కరణీయ సంఖ్య.'],
+['mth','5 పుస్తకాల ధర ₹150 అయితే 12 పుస్తకాల ధర?',['₹360','₹300','₹420','₹180'],0,'ఒక పుస్తకం ₹30; 12 × 30 = ₹360.'],
+['mth','భుజం 3 సెం.మీ గల ఘనం ఘనపరిమాణం?',['27 ఘ.సెం.మీ','9 ఘ.సెం.మీ','54 ఘ.సెం.మీ','18 ఘ.సెం.మీ'],0,'V = a³ = 3³ = 27 ఘ.సెం.మీ.'],
+// ---------- చరిత్ర ----------
+['his','ఢిల్లీ సుల్తానుల పాలనలో మొదటి వంశం?',['బానిస వంశం','ఖిల్జీ వంశం','తుగ్లక్ వంశం','లోడీ వంశం'],0,'కుతుబుద్దీన్ ఐబక్ 1206లో బానిస వంశాన్ని స్థాపించాడు.'],
+['his','కుతుబ్ మినార్ నిర్మాణాన్ని ప్రారంభించినది?',['కుతుబుద్దీన్ ఐబక్','అల్లావుద్దీన్ ఖిల్జీ','అక్బర్','షాజహాన్'],0,'ఐబక్ ప్రారంభించగా ఇల్టుట్మిష్ పూర్తి చేశాడు.'],
+['his','విజయనగర సామ్రాజ్య స్థాపకులు?',['హరిహర రాయలు, బుక్క రాయలు','శ్రీకృష్ణదేవరాయలు','అళియ రామరాయలు','ప్రతాపరుద్రుడు'],0,'1336లో హరిహర, బుక్క సోదరులు విజయనగర సామ్రాజ్యాన్ని స్థాపించారు.'],
+['his','"ఆముక్తమాల్యద" గ్రంథ రచయిత?',['శ్రీకృష్ణదేవరాయలు','అల్లసాని పెద్దన','తెనాలి రామకృష్ణుడు','పోతన'],0,'ఆముక్తమాల్యదను శ్రీకృష్ణదేవరాయలు తెలుగులో రచించారు.'],
+['his','మొదటి పానిపట్ యుద్ధం (1526) ఎవరి మధ్య జరిగింది?',['బాబర్ – ఇబ్రహీం లోడీ','అక్బర్ – హేము','అబ్దాలీ – మరాఠాలు','హుమాయూన్ – షేర్ షా'],0,'ఈ యుద్ధంలో బాబర్ గెలిచి మొఘల్ సామ్రాజ్యాన్ని స్థాపించాడు.'],
+['his','ఫతేపూర్ సిక్రీని నిర్మించిన మొఘల్ చక్రవర్తి?',['అక్బర్','బాబర్','జహంగీర్','ఔరంగజేబు'],0,'అక్బర్ ఫతేపూర్ సిక్రీని నిర్మించాడు; బులంద్ దర్వాజా అక్కడే ఉంది.'],
+['his','ప్లాసీ యుద్ధం జరిగిన సంవత్సరం?',['1757','1764','1857','1526'],0,'1757 ప్లాసీ యుద్ధంలో రాబర్ట్ క్లైవ్ సిరాజుద్దౌలాను ఓడించాడు.'],
+['his','1857 తిరుగుబాటు మొదట ఎక్కడ ప్రారంభమైంది?',['మీరట్','ఝాన్సీ','కాన్పూర్','లక్నో'],0,'1857 మే 10న మీరట్‌లో సిపాయిలు తిరుగుబాటు చేశారు.'],
+['his','భారత జాతీయ కాంగ్రెస్ స్థాపించబడిన సంవత్సరం?',['1885','1905','1857','1920'],0,'1885లో ఎ.ఓ. హ్యూమ్ కృషితో బొంబాయిలో స్థాపించబడింది.'],
+['his','కాకతీయుల రాజధాని?',['ఓరుగల్లు (వరంగల్)','హంపి','అమరావతి','రాజమహేంద్రవరం'],0,'కాకతీయులు ఓరుగల్లు రాజధానిగా పాలించారు.'],
+['his','రాజ్య సంక్రమణ సిద్ధాంతం (దత్తత రద్దు) ప్రవేశపెట్టినది?',['లార్డ్ డల్హౌసీ','లార్డ్ వెల్లస్లీ','లార్డ్ కర్జన్','లార్డ్ రిప్పన్'],0,'డల్హౌసీ దత్తత పుత్రులకు వారసత్వం నిరాకరించాడు. వెల్లస్లీ – సైన్య సహకార పద్ధతి.'],
+// ---------- భూగోళ శాస్త్రం ----------
+['geo','భూమి అంతర్భాగంలో అత్యంత బయటి పొర?',['భూపటలం','ప్రావారం','బాహ్య కేంద్రమండలం','అంతర కేంద్రమండలం'],0,'భూపటలం (క్రస్ట్) → ప్రావారం (మాంటిల్) → కేంద్రమండలం (కోర్).'],
+['geo','ప్రపంచంలో అతి పెద్ద మహాసముద్రం?',['పసిఫిక్','అట్లాంటిక్','హిందూ','ఆర్కిటిక్'],0,'పసిఫిక్ మహాసముద్రం అతి పెద్దది, అతి లోతైనది.'],
+['geo','వాతావరణంలో అత్యధిక శాతంలో ఉండే వాయువు?',['నైట్రోజన్','ఆక్సిజన్','కార్బన్ డయాక్సైడ్','ఆర్గాన్'],0,'నైట్రోజన్ సుమారు 78%, ఆక్సిజన్ సుమారు 21%.'],
+['geo','ఓజోన్ పొర ఉండే వాతావరణ పొర?',['స్ట్రాటో ఆవరణం','ట్రోపో ఆవరణం','మీసో ఆవరణం','థర్మో ఆవరణం'],0,'స్ట్రాటో ఆవరణంలోని ఓజోన్ అతినీలలోహిత కిరణాలను అడ్డుకుంటుంది.'],
+['geo','భూకంప తీవ్రతను కొలిచే స్కేలు?',['రిక్టర్ స్కేలు','బ్యూఫర్ట్ స్కేలు','సెల్సియస్ స్కేలు','బారోమీటర్'],0,'భూకంప పరిమాణం – రిక్టర్ స్కేలు; సీస్మోగ్రాఫ్ తరంగాలను నమోదు చేస్తుంది.'],
+['geo','ప్రపంచంలో అతి పొడవైన నది?',['నైలు','అమెజాన్','గంగా','మిసిసిపి'],0,'ఆఫ్రికాలోని నైలు నది అతి పొడవైనది.'],
+['geo','సహారా ఎడారి ఏ ఖండంలో ఉంది?',['ఆఫ్రికా','ఆసియా','ఆస్ట్రేలియా','దక్షిణ అమెరికా'],0,'సహారా ప్రపంచంలో అతి పెద్ద ఉష్ణ ఎడారి; ఉత్తర ఆఫ్రికాలో ఉంది.'],
+['geo','శిలాద్రవం (లావా) చల్లబడి ఏర్పడే శిలలు?',['అగ్ని శిలలు','అవక్షేప శిలలు','రూపాంతర శిలలు','సున్నపురాయి'],0,'మాగ్మా/లావా చల్లబడితే అగ్ని శిలలు (ఉదా: గ్రానైట్, బసాల్ట్).'],
+['geo','భూమధ్యరేఖ అక్షాంశం?',['0°','90°','23½°','66½°'],0,'భూమధ్యరేఖ 0° అక్షాంశం; ధ్రువాలు 90°.'],
+['geo','ఆంధ్రప్రదేశ్ తీరరేఖ పొడవు సుమారు?',['974 కి.మీ','1600 కి.మీ','500 కి.మీ','1200 కి.మీ'],0,'గుజరాత్ తర్వాత దేశంలో రెండో పొడవైన తీరరేఖ ఆంధ్రప్రదేశ్‌ది.'],
+['geo','ఆంధ్రప్రదేశ్‌లో అతి పొడవైన నది?',['గోదావరి','కృష్ణా','పెన్నా','వంశధార'],0,'గోదావరిని "దక్షిణ గంగ" అంటారు.'],
+// ---------- పౌర శాస్త్రం ----------
+['pol','భారత రాజ్యాంగం అమలులోకి వచ్చిన తేదీ?',['26 జనవరి 1950','15 ఆగస్టు 1947','26 నవంబర్ 1949','2 అక్టోబర్ 1950'],0,'26 నవంబర్ 1949న ఆమోదం; 26 జనవరి 1950 నుండి అమలు.'],
+['pol','రాజ్యాంగ ముసాయిదా కమిటీ అధ్యక్షుడు?',['డా. బి.ఆర్. అంబేద్కర్','డా. రాజేంద్ర ప్రసాద్','జవహర్‌లాల్ నెహ్రూ','సర్దార్ పటేల్'],0,'అంబేద్కర్‌ను "భారత రాజ్యాంగ నిర్మాత" అంటారు.'],
+['pol','రాజ్యాంగ సభ శాశ్వత అధ్యక్షుడు?',['డా. రాజేంద్ర ప్రసాద్','డా. బి.ఆర్. అంబేద్కర్','మహాత్మా గాంధీ','సచ్చిదానంద సిన్హా'],0,'సచ్చిదానంద సిన్హా తాత్కాలిక అధ్యక్షుడు; రాజేంద్ర ప్రసాద్ శాశ్వత అధ్యక్షుడు.'],
+['pol','భారతదేశంలో ఓటు హక్కు కనీస వయస్సు?',['18 సంవత్సరాలు','21 సంవత్సరాలు','16 సంవత్సరాలు','25 సంవత్సరాలు'],0,'61వ రాజ్యాంగ సవరణ (1988) ద్వారా 21 నుండి 18కి తగ్గించారు.'],
+['pol','గ్రామ పంచాయతీ అధ్యక్షుడిని ఏమంటారు?',['సర్పంచ్','మండల అధ్యక్షుడు','జడ్పీ చైర్మన్','మేయర్'],0,'గ్రామ పంచాయతీకి సర్పంచ్ అధ్యక్షత వహిస్తారు.'],
+['pol','రాష్ట్ర గవర్నర్‌ను నియమించేది?',['రాష్ట్రపతి','ముఖ్యమంత్రి','ప్రధానమంత్రి','హైకోర్టు ప్రధాన న్యాయమూర్తి'],0,'గవర్నర్‌ను రాష్ట్రపతి నియమిస్తారు.'],
+['pol','లోక్‌సభ పదవీకాలం?',['5 సంవత్సరాలు','6 సంవత్సరాలు','4 సంవత్సరాలు','శాశ్వతం'],0,'లోక్‌సభ – 5 సంవత్సరాలు; రాజ్యసభ శాశ్వత సభ.'],
+['pol','ప్రస్తుతం భారత రాజ్యాంగంలోని ప్రాథమిక హక్కుల సంఖ్య?',['6','7','5','11'],0,'44వ సవరణతో ఆస్తి హక్కు తొలగించిన తర్వాత 6 ప్రాథమిక హక్కులు.'],
+['pol','విద్యాహక్కు చట్టం ఏ వయస్సు పిల్లలకు ఉచిత, నిర్బంధ విద్య ఇస్తుంది?',['6 – 14 సంవత్సరాలు','3 – 10 సంవత్సరాలు','5 – 15 సంవత్సరాలు','6 – 18 సంవత్సరాలు'],0,'RTE చట్టం 2009 – 6 నుండి 14 సంవత్సరాల పిల్లలకు.'],
+['pol','రాజ్యసభకు అధ్యక్షత వహించేది?',['ఉపరాష్ట్రపతి','రాష్ట్రపతి','ప్రధానమంత్రి','లోక్‌సభ స్పీకర్'],0,'ఉపరాష్ట్రపతి రాజ్యసభకు ఎక్స్-అఫీషియో చైర్మన్.'],
+['pol','రాష్ట్ర శాసనసభ సభ్యుడిని ఏమంటారు?',['MLA','MP','MLC','ZPTC'],0,'శాసనసభ సభ్యుడు – MLA; శాసనమండలి సభ్యుడు – MLC.'],
+// ---------- అర్థశాస్త్రం ----------
+['eco','భారతదేశ కేంద్ర బ్యాంకు?',['భారతీయ రిజర్వ్ బ్యాంకు (RBI)','స్టేట్ బ్యాంక్ ఆఫ్ ఇండియా','నాబార్డ్','ప్రపంచ బ్యాంకు'],0,'RBI 1935లో స్థాపించబడింది; దీనిని "బ్యాంకులకు బ్యాంకు" అంటారు.'],
+['eco','GST అంటే?',['వస్తు సేవల పన్ను','సాధారణ అమ్మకపు పన్ను','ప్రభుత్వ సేవా పన్ను','స్థూల రాష్ట్ర పన్ను'],0,'GST – Goods and Services Tax; 1 జూలై 2017 నుండి అమలు.'],
+['eco','కింది వాటిలో ప్రాథమిక రంగానికి చెందినది?',['వ్యవసాయం','బ్యాంకింగ్','వస్త్ర పరిశ్రమ','రవాణా'],0,'వ్యవసాయం – ప్రాథమిక; పరిశ్రమలు – ద్వితీయ; సేవలు – తృతీయ రంగం.'],
+['eco','జాతీయ వినియోగదారుల దినోత్సవం?',['డిసెంబర్ 24','మార్చి 15','అక్టోబర్ 2','నవంబర్ 14'],0,'1986 వినియోగదారుల రక్షణ చట్టం వచ్చిన రోజు డిసెంబర్ 24. మార్చి 15 ప్రపంచ వినియోగదారుల దినోత్సవం.'],
+['eco','చౌక ధరల దుకాణాలు (రేషన్ షాపులు) ఏ వ్యవస్థలో భాగం?',['ప్రజా పంపిణీ వ్యవస్థ','బ్యాంకింగ్ వ్యవస్థ','పన్నుల వ్యవస్థ','బీమా వ్యవస్థ'],0,'ప్రజా పంపిణీ వ్యవస్థ (PDS) ద్వారా తక్కువ ధరకు నిత్యావసరాలు అందిస్తారు.'],
+['eco','₹1 నోటుపై సంతకం చేసేది?',['కేంద్ర ఆర్థిక కార్యదర్శి','RBI గవర్నర్','ప్రధానమంత్రి','రాష్ట్రపతి'],0,'₹1 నోటును భారత ప్రభుత్వం జారీ చేస్తుంది; మిగతా నోట్లపై RBI గవర్నర్ సంతకం.']
+];
+
+/* ================= సహాయక ఫంక్షన్లు ================= */
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[R(0,a.length-1)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
+const AL='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const DAYS=['ఆదివారం','సోమవారం','మంగళవారం','బుధవారం','గురువారం','శుక్రవారం','శనివారం'];
+const neg=x=>x<0?'−'+(-x):String(x);
+function numOpts(ans,sp){const s=new Set([ans]);let g=0;while(s.size<4&&g<300){g++;const d=R(1,Math.max(2,sp));const v=Math.random()<.5?ans-d:ans+d;if(v>0)s.add(v);}let k=1;while(s.size<4){s.add(ans+k);k++;}return [...s];}
+function mk(s,q,ans,opts,e){ans=String(ans);let o=[...new Set(opts.map(String))].filter(x=>x!==ans);if(o.length<3&&/^\d+$/.test(ans)){let k=1;while(o.length<3){const v=String(+ans+k);if(!o.includes(v))o.push(v);k++;}}o=shuffle([ans,...o.slice(0,3)]);return{s,q,o,a:o.indexOf(ans),e};}
+function fromStatic(r){const [s,q,o,a,e]=r;const ans=o[a];const so=shuffle(o);return{s,q,o:so,a:so.indexOf(ans),e};}
+
+/* ================= MAT ప్రశ్నల జనరేటర్లు ================= */
+const MATG=[
+()=>{const a=R(2,30),d=R(3,12);const t=[0,1,2,3,4].map(i=>a+i*d);const ans=a+5*d;return mk('mat',`శ్రేణిలో తర్వాత వచ్చే సంఖ్య ఏది?\n${t.join(', ')}, ?`,ans,numOpts(ans,d),`ప్రతి పదానికి ${d} కలుపుతున్నారు: ${t[4]} + ${d} = ${ans}`)},
+()=>{const a=R(1,5),r=pick([2,3]);const t=[0,1,2,3].map(i=>a*r**i);const ans=a*r**4;return mk('mat',`తర్వాత వచ్చే సంఖ్య ఏది?\n${t.join(', ')}, ?`,ans,[ans,ans+t[3],ans-r,t[3]+r*2],`ప్రతిసారి ${r}తో గుణిస్తున్నారు: ${t[3]} × ${r} = ${ans}`)},
+()=>{const cube=Math.random()<.35;const n=R(2,cube?5:9);const p=cube?3:2;const t=[0,1,2,3].map(i=>(n+i)**p);const ans=(n+4)**p;return mk('mat',`తర్వాత వచ్చే సంఖ్య ఏది?\n${t.join(', ')}, ?`,ans,[ans,(n+5)**p,ans+1,ans-2],`ఇవి ${n}, ${n+1}, ${n+2}, ${n+3} ల ${cube?'ఘనాలు':'వర్గాలు'}. ${n+4}${cube?'³':'²'} = ${ans}`)},
+()=>{let a=R(1,20);const d=R(1,4);const t=[a];for(let i=0;i<4;i++){a+=d+i;t.push(a);}const ans=a+d+4;return mk('mat',`తర్వాత వచ్చే సంఖ్య ఏది?\n${t.join(', ')}, ?`,ans,numOpts(ans,4),`తేడాలు ${d}, ${d+1}, ${d+2}, ${d+3}. తర్వాతి తేడా ${d+4}: ${a} + ${d+4} = ${ans}`)},
+()=>{const a=R(1,9),b=R(10,20),da=R(1,5),db=pick([3,5,10]);const t=[a,b,a+da,b+db,a+2*da,b+2*db];const ans=a+3*da;return mk('mat',`తర్వాత వచ్చే సంఖ్య ఏది?\n${t.join(', ')}, ?`,ans,[ans,b+3*db,ans+1,ans-1],`బేసి స్థానాల్లో +${da}: ${a}, ${a+da}, ${a+2*da}, ${ans}. సరి స్థానాల్లో +${db}.`)},
+()=>{const a=R(3,25),d=R(2,9);const t=[0,1,2,3,4,5].map(i=>a+i*d);const k=R(1,4);const ans=t[k];return mk('mat',`ప్రశ్నార్థకం (?) స్థానంలో వచ్చే సంఖ్య ఏది?\n${t.map((v,i)=>i===k?'?':v).join(', ')}`,ans,numOpts(ans,d),`ప్రతిసారి +${d}. కాబట్టి ? = ${ans}`)},
+()=>{const k=R(2,4),s=R(0,25-5*k);const t=[0,1,2,3].map(i=>AL[s+i*k]);const ans=AL[s+4*k];const i0=s+4*k;const o=[ans];[1,-1,2,3].forEach(x=>{if(AL[i0+x])o.push(AL[i0+x])});return mk('mat',`అక్షర శ్రేణిలో తర్వాతి అక్షరం ఏది?\n${t.join(', ')}, ?`,ans,o,`ప్రతిసారి ${k} స్థానాలు ముందుకు: ${t[3]} → ${ans}`)},
+()=>{const W=['CAT','DOG','SUN','PEN','BOOK','MILK','RAIN','TREE','FISH','LAMP','KITE','BALL','GOLD','ROSE','DESK','HAND'];const w1=pick(W);let w2=pick(W);while(w2===w1)w2=pick(W);const k=pick([1,2,3,-1,-2]);const sh=(w,k)=>[...w].map(c=>AL[(AL.indexOf(c)+k+26)%26]).join('');const ans=sh(w2,k);const o=new Set([ans,sh(w2,k+1),sh(w2,k-1)]);let x=2;while(o.size<4){o.add(sh(w2,k+x));x++;}return mk('mat',`ఒక సంకేత భాషలో ${w1} ను ${sh(w1,k)} అని రాస్తే, ${w2} ను ఎలా రాస్తారు?`,ans,[...o],`ప్రతి అక్షరాన్ని ${Math.abs(k)} స్థానం${Math.abs(k)>1?'లు':''} ${k>0?'ముందుకు':'వెనక్కి'} జరిపారు. ${w2} → ${ans}`)},
+()=>{const t=pick(['sq','cu','2n1']);const n=R(2,t==='cu'?6:9);let m=R(2,t==='cu'?7:12);while(m===n)m=R(2,t==='cu'?7:12);const f=x=>t==='sq'?x*x:t==='cu'?x**3:2*x+1;const ans=f(m);return mk('mat',`${n} : ${f(n)} :: ${m} : ?`,ans,[ans,f(m+1),f(m-1),ans+1,ans+3],t==='sq'?`సంఖ్య వర్గం: ${m}² = ${ans}`:t==='cu'?`సంఖ్య ఘనం: ${m}³ = ${ans}`:`2 × సంఖ్య + 1: 2 × ${m} + 1 = ${ans}`)},
+()=>{const b=shuffle([4,5,6,7,8,9,10,11,12,13,14,15]).slice(0,4);const sq=b.slice(0,3).map(x=>x*x);const odd=b[3]*b[3]+pick([1,-1,2]);return mk('mat','కింది వాటిలో భిన్నమైన సంఖ్య ఏది?',odd,[...sq,odd],`${sq.join(', ')} పూర్ణ వర్గాలు. ${odd} పూర్ణ వర్గం కాదు.`)},
+()=>{const ps=shuffle([11,13,17,19,23,29,31,37,41,43,47]).slice(0,3),c=pick([15,21,25,27,33,35,39,45,49,51]);return mk('mat','కింది వాటిలో భిన్నమైన సంఖ్య ఏది?',c,[...ps,c],`${ps.join(', ')} ప్రధాన సంఖ్యలు. ${c} ప్రధాన సంఖ్య కాదు.`)},
+()=>{const h=R(1,11);const ans=Math.min(30*h,360-30*h);const o=[ans,...shuffle([30,60,90,120,150,180].filter(x=>x!==ans)).slice(0,3)].map(x=>x+'°');return mk('mat',`గడియారంలో సమయం సరిగ్గా ${h}:00 అయినప్పుడు రెండు ముళ్ళ మధ్య చిన్న కోణం ఎంత?`,ans+'°',o,`ప్రతి గంట గుర్తుకు 30°. ${h} × 30° = ${30*h}°${30*h>180?`. చిన్న కోణం = 360° − ${30*h}° = ${ans}°`:''}`)},
+()=>{const L=R(5,25),Rr=R(5,25);const ans=L+Rr-1;return mk('mat',`ఒక వరుసలో రవి ఎడమ నుండి ${L}వ స్థానంలో, కుడి నుండి ${Rr}వ స్థానంలో ఉన్నాడు. వరుసలో మొత్తం ఎంత మంది ఉన్నారు?`,ans,[ans,ans+1,ans-1,ans+2],`మొత్తం = ${L} + ${Rr} − 1 = ${ans}`)},
+()=>{const x=R(5,15),k=pick([3,4,5]);const sum=x*(k+1);return mk('mat',`తండ్రి వయస్సు కొడుకు వయస్సుకు ${k} రెట్లు. ఇద్దరి వయస్సుల మొత్తం ${sum} సంవత్సరాలు. కొడుకు వయస్సు ఎంత?`,x,numOpts(x,4),`కొడుకు = x అయితే తండ్రి = ${k}x. ${k+1}x = ${sum} → x = ${x}`)},
+()=>{const fromR=Math.random()<.5;const n=R(3,24);const ans=fromR?AL[26-n]:AL[n-1];const i=AL.indexOf(ans);const o=[ans];[1,-1,2,-2].forEach(x=>{if(AL[i+x])o.push(AL[i+x])});return mk('mat',`ఆంగ్ల అక్షరమాలలో ${fromR?'కుడి':'ఎడమ'} వైపు నుండి ${n}వ అక్షరం ఏది?`,ans,o,fromR?`కుడి నుండి ${n}వ అక్షరం = ఎడమ నుండి ${27-n}వ అక్షరం = ${ans}`:`A నుండి లెక్కిస్తే ${n}వ అక్షరం ${ans}`)},
+()=>{const d=R(1,10),dy=R(0,6),add=R(8,20);const ans=DAYS[(dy+add)%7];return mk('mat',`ఒక నెలలో ${d}వ తేదీ ${DAYS[dy]} అయితే, అదే నెలలో ${d+add}వ తేదీ ఏ వారం?`,ans,[ans,...shuffle(DAYS.filter(x=>x!==ans)).slice(0,3)],`${add} రోజుల తేడా. ${add} ÷ 7 శేషం ${add%7}. ${DAYS[dy]} నుండి ${add%7} రోజులు ముందుకు = ${ans}`)},
+()=>{const W=['CAB','BAG','DEAF','FACE','BED','HEAD','JAM','LID','MAP','KID'];const w=pick(W);const ans=[...w].reduce((s,c)=>s+AL.indexOf(c)+1,0);return mk('mat',`A=1, B=2, C=3, … Z=26 అయితే ${w} పదంలోని అక్షరాల విలువల మొత్తం ఎంత?`,ans,numOpts(ans,4),`${[...w].map(c=>c+'='+(AL.indexOf(c)+1)).join(', ')} → మొత్తం ${ans}`)},
+()=>{const x=R(3,15),a=R(2,9),b=R(1,20);const r=a*x+b;return mk('mat',`ఒక సంఖ్యను ${a}తో గుణించి ${b} కలిపితే ${r} వచ్చింది. ఆ సంఖ్య ఏది?`,x,numOpts(x,3),`(${r} − ${b}) ÷ ${a} = ${x}`)},
+()=>{const D=['ఉత్తరం','తూర్పు','దక్షిణం','పడమర'];const s=R(0,3);const t1=pick(['కుడి','ఎడమ']),t2=pick(['కుడి','ఎడమ']);const m=(c,t)=>(c+(t==='కుడి'?1:3))%4;const c1=m(s,t1),c2=m(c1,t2);const ans=D[c2];return mk('mat',`ఒక వ్యక్తి ${D[s]} వైపు ముఖం చేసి నిలబడ్డాడు. మొదట ${t1} వైపుకు, తర్వాత ${t2} వైపుకు తిరిగాడు. ఇప్పుడు అతడు ఏ దిశకు ముఖం చేసి ఉన్నాడు?`,ans,D,`${D[s]} → ${t1} → ${D[c1]} → ${t2} → ${ans}`)}
+];
+
+/* ================= గణితం జనరేటర్లు ================= */
+const MTHG=[
+()=>{const p=pick([10,20,25,50,15,40,75]);const n=R(2,30)*20;const ans=p*n/100;return mk('mth',`${n} లో ${p}% ఎంత?`,ans,[ans,ans+n/20,ans-n/20,n*p/10],`${n} × ${p}/100 = ${ans}`)},
+()=>{const P=R(1,10)*1000,r=pick([5,8,10,12]),t=R(2,5);const y=P*r/100,ans=y*t;return mk('mth',`₹${P} కు సంవత్సరానికి ${r}% చొప్పున ${t} సంవత్సరాలకు సాధారణ వడ్డీ ఎంత?`,'₹'+ans,[ans,y*(t+1),y*(t-1),P+ans].map(x=>'₹'+x),`I = PTR/100 = ${P} × ${t} × ${r} / 100 = ₹${ans}`)},
+()=>{const a=R(2,9),x=R(1,12),b=R(1,20);const c=a*x+b;return mk('mth',`${a}x + ${b} = ${c} అయితే x విలువ ఎంత?`,x,numOpts(x,3),`${a}x = ${c} − ${b} = ${c-b} → x = ${x}`)},
+()=>{const avg=R(10,50);const ns=[0,0,0,0].map(()=>avg+R(-8,8));ns.push(avg*5-ns.reduce((a,b)=>a+b,0));return mk('mth',`${ns.join(', ')} ల సగటు ఎంత?`,avg,numOpts(avg,4),`మొత్తం ${avg*5} ÷ 5 = ${avg}`)},
+()=>{const n=R(11,30);return mk('mth',`√${n*n} = ?`,n,numOpts(n,3),`${n} × ${n} = ${n*n}`)},
+()=>{const l=R(5,20),b=R(3,12);const ar=Math.random()<.5;const u=ar?' చ.సెం.మీ':' సెం.మీ';const ans=ar?l*b:2*(l+b);return mk('mth',`పొడవు ${l} సెం.మీ, వెడల్పు ${b} సెం.మీ గల దీర్ఘచతురస్రం ${ar?'వైశాల్యం':'చుట్టుకొలత'} ఎంత?`,ans+u,[ans,ar?2*(l+b):l*b,l+b,ans+2,ans+4].map(x=>x+u),ar?`వైశాల్యం = పొ × వె = ${l} × ${b} = ${ans}`:`చుట్టుకొలత = 2(పొ + వె) = 2(${l} + ${b}) = ${ans}`)},
+()=>{const a=R(2,12),b=R(2,12),k=R(0,2);let q,ans,e;if(k===0){q=`(−${a}) × (−${b}) = ?`;ans=a*b;e='రెండు ఋణ సంఖ్యల లబ్ధం ధనాత్మకం.';}else if(k===1){q=`(−${a}) × ${b} = ?`;ans=-a*b;e='ఋణ సంఖ్య × ధన సంఖ్య = ఋణ సంఖ్య.';}else{q=`${a} − (−${b}) = ?`;ans=a+b;e=`ఋణ సంఖ్యను తీసివేయడం = కలపడం: ${a} + ${b} = ${a+b}`;}return mk('mth',q,neg(ans),[ans,-ans,ans+1,ans-1].map(neg),e)},
+()=>{const p=R(1,5);let q=R(1,6);while(q===p)q=R(1,6);const u=R(5,30);const tot=(p+q)*u,ans=p*u;return mk('mth',`₹${tot} ను ${p} : ${q} నిష్పత్తిలో పంచితే మొదటి భాగం ఎంత?`,'₹'+ans,[ans,q*u,ans+u,ans+2*u,ans+3*u,tot].map(x=>'₹'+x),`ఒక భాగం = ${tot} ÷ ${p+q} = ${u}. మొదటి భాగం = ${p} × ${u} = ₹${ans}`)}
+];
+
+/* ================= ప్రశ్నల సెట్ తయారీ ================= */
+const SUB={mat:'MAT',phy:'భౌతిక శాస్త్రం',che:'రసాయన శాస్త్రం',bio:'జీవ శాస్త్రం',mth:'గణితం',his:'చరిత్ర',geo:'భూగోళ శాస్త్రం',pol:'పౌర శాస్త్రం',eco:'అర్థశాస్త్రం'};
+const WT={phy:12,che:11,bio:12,mth:20,his:10,geo:10,pol:10,eco:5};
+const SATK=Object.keys(WT);
+function fill(n,staticShare,sub,gens){
+  const st=shuffle(BANK.filter(r=>r[0]===sub)).slice(0,Math.round(n*staticShare)).map(fromStatic);
+  const seen=new Set(st.map(x=>x.q)),out=[...st];let order=shuffle(gens),gi=0,guard=0;
+  while(out.length<n&&guard<n*80){guard++;if(gi>=order.length){order=shuffle(gens);gi=0;}const x=order[gi++]();if(!seen.has(x.q)){seen.add(x.q);out.push(x);}}
+  return shuffle(out);
+}
+const buildMAT=n=>fill(n,.2,'mat',MATG);
+const mathQs=n=>fill(n,.35,'mth',MTHG);
+const poolSize=s=>BANK.filter(r=>r[0]===s).length;
+function buildSAT(n,sub){
+  if(sub==='mth')return mathQs(n);
+  if(sub!=='all')return shuffle(BANK.filter(r=>r[0]===sub)).slice(0,n).map(fromStatic);
+  const q={};let tot=0;SATK.forEach(k=>{q[k]=Math.floor(n*WT[k]/90);tot+=q[k];});q.mth+=n-tot;
+  const grp={};
+  SATK.forEach(k=>{if(k==='mth')return;const take=shuffle(BANK.filter(r=>r[0]===k)).slice(0,q[k]).map(fromStatic);grp[k]=take;q.mth+=q[k]-take.length;});
+  grp.mth=mathQs(q.mth);
+  return SATK.flatMap(k=>grp[k]||[]);
+}
+
+/* ================= స్థితి / నిల్వ ================= */
+const ls={get(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
+let cfg=Object.assign({test:'MAT',mode:'practice',sub:'all',count:20,cat:'gen',name:''},ls.get('nmms_cfg')||{});
+let S=null,screen='home',reviewFilter='wrong';
+const app=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const testLabel=c=>c.test==='FULL'?'పూర్తి మాక్ టెస్ట్':c.test==='SAT'?('SAT'+(c.sub!=='all'?' ('+SUB[c.sub]+')':'')):'MAT';
+const fmtT=s=>{s=Math.max(0,s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
+const save=()=>{if(S)ls.set('nmms_s',S);};
+
+/* ================= వాయిస్ ================= */
+let tts=!!ls.get('nmms_tts');
+const ttsBtn=document.getElementById('ttsBtn');
+function syncTts(){ttsBtn.classList.toggle('on',tts);ttsBtn.setAttribute('aria-pressed',tts);ttsBtn.textContent=tts?'🔊 వాయిస్ ఆన్':'🔇 వాయిస్';}
+function speak(t){if(!tts||!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/\n/g,'. '));u.lang='te-IN';const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith('te'));if(v)u.voice=v;u.rate=.95;speechSynthesis.speak(u);}
+ttsBtn.onclick=()=>{tts=!tts;ls.set('nmms_tts',tts);syncTts();if(!tts&&'speechSynthesis' in window)speechSynthesis.cancel();else if(screen==='quiz')readQ();};
+function readQ(){const q=S.qs[S.cur];speak(q.q+'. '+q.o.map((o,k)=>'ABCD'[k]+'. '+o).join('. '));}
+document.getElementById('homeBtn').onclick=()=>{save();if('speechSynthesis' in window)speechSynthesis.cancel();renderHome();};
+
+/* ================= హోమ్ ================= */
+function seg(key,items,dis){return `<div class="seg" role="group">${items.map(([v,l])=>`<button data-k="${key}" data-v="${v}" class="${String(cfg[key])===String(v)?'on':''}" ${dis&&dis(v)?'disabled':''}>${l}</button>`).join('')}</div>`;}
+function renderHome(){
+  screen='home';
+  const sv=ls.get('nmms_s');const hist=ls.get('nmms_h')||[];
+  const isSAT=cfg.test==='SAT',isFull=cfg.test==='FULL';
+  const cap=isSAT&&cfg.sub!=='all'&&cfg.sub!=='mth'?poolSize(cfg.sub):Infinity;
+  if(cfg.count>cap)cfg.count=[10,20,30,45,90].filter(x=>x<=cap).pop()||cap;
+  app.innerHTML=`
+  <h1>NMMS ప్రాక్టీస్</h1>
+  <p class="lede">జాతీయ ప్రతిభా ఉపకార వేతన పరీక్షకు సాధన. 7వ తరగతి పూర్తి సిలబస్, 8వ తరగతి అక్టోబర్ వరకు.</p>
+  <div class="pattern"><div><b>90</b><span>MAT ప్రశ్నలు</span></div><div><b>90</b><span>SAT ప్రశ్నలు</span></div><div><b>180</b><span>నిమిషాలు</span></div></div>
+  <p class="note">ప్రతి ప్రశ్నకు 1 మార్కు. నెగటివ్ మార్కింగ్ లేదు. అర్హత: రెండు పరీక్షలు కలిపి 40% (SC/ST కి 32%).</p>
+  ${sv&&!sv.done?`<div class="resume"><div><b>మధ్యలో ఆపిన పరీక్ష ఉంది</b><br><span style="font-size:15px">${esc(testLabel(sv.cfg))}: ${sv.ans.filter(x=>x!==null).length} / ${sv.qs.length} పూర్తి</span></div><div class="btns" style="margin:0"><button class="pri" id="resBtn">కొనసాగించండి</button><button class="ghost" id="dropBtn">రద్దు</button></div></div>`:''}
+  <section class="panel">
+    <label class="fld">విద్యార్థి పేరు (ఐచ్ఛికం)<input id="nm" value="${esc(cfg.name)}" maxlength="40" autocomplete="off"></label>
+    <div class="grp"><h3>పరీక్ష</h3>${seg('test',[['MAT','MAT'],['SAT','SAT'],['FULL','పూర్తి మాక్ టెస్ట్ (MAT + SAT)']])}</div>
+    ${isSAT?`<div class="grp"><h3>SAT విషయం (మార్కులు)</h3>${seg('sub',[['all','అన్నీ (90 మార్కుల నమూనాలో)'],...SATK.map(k=>[k,`${SUB[k]} (${WT[k]})`])])}</div>`:''}
+    <div class="grp"><h3>విధానం</h3>${seg('mode',[['practice','ప్రాక్టీస్'],['exam','పరీక్ష (టైమర్‌తో)']])}
+      <p class="hint">${cfg.mode==='practice'?'ప్రతి ప్రశ్నకు వెంటనే సరైన జవాబు, వివరణ కనిపిస్తాయి.':'నిజమైన పరీక్షలా: ఒక్కో ప్రశ్నకు 1 నిమిషం. సమర్పించిన తర్వాతే ఫలితం.'}</p></div>
+    ${isFull?'<p class="hint" style="margin:-6px 0 16px">MAT 90 + SAT 90 = 180 ప్రశ్నలు, 180 నిమిషాలు.</p>':`<div class="grp"><h3>ప్రశ్నల సంఖ్య</h3>${seg('count',[10,20,30,45,90].map(x=>[x,String(x)]),v=>v>cap)}${cap!==Infinity?`<p class="hint">ఈ విషయంలో ${cap} ప్రశ్నలు అందుబాటులో ఉన్నాయి.</p>`:''}</div>`}
+    <div class="grp"><h3>వర్గం (అర్హత కట్-ఆఫ్ కోసం)</h3>${seg('cat',[['gen','జనరల్ / BC (40%)'],['sc','SC / ST (32%)']])}</div>
+    <button class="pri wide" id="goBtn">ప్రారంభించండి</button>
+  </section>
+  ${hist.length?`<section class="panel"><h2>గత ఫలితాలు</h2><ul class="hist">${hist.slice(0,8).map(h=>`<li><span>${esc(h.d)}${h.n?' – '+esc(h.n):''}<br><small>${esc(h.t)}</small></span><span class="p" style="color:${h.ok?'var(--ok)':'var(--bad)'}">${h.c}/${h.tt} (${h.p}%)</span></li>`).join('')}</ul></section>`:''}
+  `;
+  app.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{const k=b.dataset.k;cfg[k]=k==='count'?+b.dataset.v:b.dataset.v;ls.set('nmms_cfg',cfg);renderHome();});
+  document.getElementById('nm').oninput=e=>{cfg.name=e.target.value;ls.set('nmms_cfg',cfg);};
+  document.getElementById('goBtn').onclick=start;
+  const rb=document.getElementById('resBtn');if(rb){rb.onclick=()=>{S=sv;renderQuiz();};document.getElementById('dropBtn').onclick=()=>{if(confirm('మధ్యలో ఆపిన పరీక్షను రద్దు చేయాలా?')){ls.del('nmms_s');renderHome();}};}
+}
+
+function start(){
+  const c=Object.assign({},cfg);let qs;
+  if(c.test==='FULL')qs=[...buildMAT(90),...buildSAT(90,'all')];
+  else if(c.test==='MAT')qs=buildMAT(c.count);
+  else qs=buildSAT(c.count,c.sub);
+  S={cfg:c,qs,ans:Array(qs.length).fill(null),cur:0,left:c.mode==='exam'?qs.length*60:null,done:false};
+  save();renderQuiz();
+}
+
+/* ================= క్విజ్ ================= */
+function renderQuiz(){
+  screen='quiz';
+  const i=S.cur,q=S.qs[i],n=S.qs.length,ex=S.cfg.mode==='exam',a=S.ans[i];
+  const answered=S.ans.filter(x=>x!==null).length;
+  const right=S.ans.reduce((s,x,k)=>s+(x===S.qs[k].a?1:0),0);
+  const cls=k=>{if(ex)return k===a?'sel':'';if(a===null)return '';if(k===q.a)return 'right';if(k===a)return 'wrong';return 'dim';};
+  app.innerHTML=`
+  <div class="qbar"><span class="no">ప్రశ్న <b>${i+1}</b> / ${n}</span><span class="tag">${SUB[q.s]}</span>
+   ${ex?`<span class="timer ${S.left<300?'low':''}" id="tm" aria-label="మిగిలిన సమయం">${fmtT(S.left)}</span>`:`<span class="live">సరైనవి <b>${right}</b> / ${answered}</span>`}</div>
+  <div class="prog"><i style="width:${answered/n*100}%"></i></div>
+  <article class="qcard">
+    <p class="qtext">${esc(q.q)}</p>
+    <div class="opts">${q.o.map((o,k)=>`<button class="opt ${cls(k)}" data-k="${k}"><span class="bub">${'ABCD'[k]}</span><span>${esc(o)}</span></button>`).join('')}</div>
+    ${!ex&&a!==null?`<div class="expl ${a===q.a?'ok':'bad'}"><b>${a===q.a?'సరైన జవాబు!':'తప్పు. సరైన జవాబు: '+'ABCD'[q.a]+') '+esc(q.o[q.a])}</b><p>${esc(q.e)}</p></div>`:''}
+  </article>
+  <div class="navb">
+    <button class="ghost" id="prev" ${i===0?'disabled':''}>ముందు ప్రశ్న</button>
+    ${i<n-1?`<button class="pri" id="next">తర్వాత ప్రశ్న</button>`:`<button class="pri" id="fin">${ex?'పరీక్ష సమర్పించు':'ఫలితం చూడండి'}</button>`}
+  </div>
+  ${ex?`<details class="sheet" id="sheet" ${S.pal?'open':''}><summary>జవాబు పత్రం: ${answered} / ${n} గుర్తించారు</summary>
+     <p class="legend">నిండిన వృత్తం = జవాబు గుర్తించారు. నొక్కితే ఆ ప్రశ్నకు వెళ్తుంది.</p>
+     <div class="pal">${S.ans.map((x,k)=>`<button data-j="${k}" class="${x!==null?'f':''} ${k===i?'c':''}">${k+1}</button>`).join('')}</div>
+     <button class="pri" id="fin2">పరీక్ష సమర్పించు</button></details>`
+   :(i<n-1?`<button class="endnow" id="fin3">ఇక్కడితో ముగించి ఫలితం చూడండి</button>`:'')}
+  `;
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k));
+  document.getElementById('prev').onclick=()=>go(-1);
+  const nx=document.getElementById('next');if(nx)nx.onclick=()=>go(1);
+  ['fin','fin2','fin3'].forEach(id=>{const b=document.getElementById(id);if(b)b.onclick=finish;});
+  const sh=document.getElementById('sheet');if(sh)sh.ontoggle=()=>{S.pal=sh.open;};
+  app.querySelectorAll('.pal button').forEach(b=>b.onclick=()=>{S.cur=+b.dataset.j;save();renderQuiz();});
+  readQ();
+}
+function choose(k){
+  const ex=S.cfg.mode==='exam';
+  if(!ex&&S.ans[S.cur]!==null)return;
+  S.ans[S.cur]=k;save();renderQuiz();
+  if(!ex){const q=S.qs[S.cur];speak((k===q.a?'సరైన జవాబు. ':'తప్పు. సరైన జవాబు '+q.o[q.a]+'. ')+q.e);}
+}
+function go(d){const j=S.cur+d;if(j<0||j>=S.qs.length)return;S.cur=j;save();renderQuiz();window.scrollTo({top:0});}
+function finish(auto){
+  if(auto!==true){const un=S.ans.filter(x=>x===null).length;
+    if(S.cfg.mode==='exam'&&!confirm(un?`${un} ప్రశ్నలకు జవాబు గుర్తించలేదు. అయినా సమర్పించాలా?`:'పరీక్షను సమర్పించాలా?'))return;}
+  S.done=true;
+  const c=S.ans.reduce((s,x,k)=>s+(x===S.qs[k].a?1:0),0),tt=S.qs.length,p=Math.round(c/tt*1000)/10;
+  const cut=S.cfg.cat==='sc'?32:40;
+  const hist=ls.get('nmms_h')||[];
+  hist.unshift({d:new Date().toLocaleDateString('en-IN'),n:S.cfg.name,t:testLabel(S.cfg)+(S.cfg.mode==='exam'?' – పరీక్ష':' – ప్రాక్టీస్'),c,tt,p,ok:p>=cut});
+  ls.set('nmms_h',hist.slice(0,30));
+  save();reviewFilter='wrong';renderResult();
+}
+setInterval(()=>{
+  if(screen!=='quiz'||!S||S.done||S.cfg.mode!=='exam')return;
+  S.left--;const tm=document.getElementById('tm');
+  if(tm){tm.textContent=fmtT(S.left);tm.classList.toggle('low',S.left<300);}
+  if(S.left%5===0)save();
+  if(S.left<=0){alert('సమయం ముగిసింది. పరీక్ష సమర్పించబడింది.');finish(true);}
+},1000);
+
+/* ================= ఫలితం ================= */
+function renderResult(){
+  screen='result';if('speechSynthesis' in window)speechSynthesis.cancel();
+  const by={};S.qs.forEach((q,i)=>{(by[q.s]=by[q.s]||{c:0,t:0}).t++;if(S.ans[i]===q.a)by[q.s].c++;});
+  const c=Object.values(by).reduce((s,x)=>s+x.c,0),tt=S.qs.length,p=Math.round(c/tt*1000)/10;
+  const cut=S.cfg.cat==='sc'?32:40,ok=p>=cut;
+  const order=['mat',...SATK].filter(k=>by[k]);
+  const satC=SATK.reduce((s,k)=>s+(by[k]?by[k].c:0),0),satT=SATK.reduce((s,k)=>s+(by[k]?by[k].t:0),0);
+  const un=S.ans.filter(x=>x===null).length;
+  const list=S.qs.map((q,i)=>({q,i,a:S.ans[i]})).filter(x=>reviewFilter==='all'||x.a!==x.q.a);
+  app.innerHTML=`
+  <section class="panel">
+    <h2>${esc(testLabel(S.cfg))} ఫలితం${S.cfg.name?' – '+esc(S.cfg.name):''}</h2>
+    <div class="score"><div class="big">${c}<small> / ${tt}</small></div><div>${p}%</div></div>
+    ${S.cfg.test==='FULL'?`<div class="parts"><div><b>${by.mat?by.mat.c:0}/90</b>MAT</div><div><b>${satC}/${satT}</b>SAT</div><div><b>${c}/180</b>మొత్తం</div></div>`:''}
+    <div class="verdict ${ok?'ok':'bad'}">${ok?`అర్హత కట్-ఆఫ్ (${cut}%) దాటారు. ఇలాగే సాధన కొనసాగించండి.`:`అర్హతకు ${cut}% కావాలి. ఇంకా ${Math.ceil(cut*tt/100)-c} మార్కులు పెంచుకోవాలి.`}</div>
+    ${un?`<p class="hint" style="text-align:center">జవాబు ఇవ్వని ప్రశ్నలు: ${un}</p>`:''}
+  </section>
+  <section class="panel">
+    <h2>విషయాల వారీగా</h2>
+    <table><thead><tr><th>విషయం</th><th class="n">మార్కులు</th><th style="width:35%"></th></tr></thead><tbody>
+    ${order.map(k=>{const x=by[k],pp=Math.round(x.c/x.t*100);return `<tr><td>${SUB[k]}</td><td class="n">${x.c}/${x.t}</td><td><div class="bar"><i style="width:${pp}%;background:${pp>=cut?'var(--ok)':'var(--bad)'}"></i></div></td></tr>`;}).join('')}
+    </tbody></table>
+  </section>
+  <section class="panel">
+    <h2>జవాబుల సమీక్ష</h2>
+    <div class="seg" style="margin-bottom:8px"><button data-f="wrong" class="${reviewFilter==='wrong'?'on':''}">తప్పులు మాత్రమే (${tt-c})</button><button data-f="all" class="${reviewFilter==='all'?'on':''}">అన్ని ప్రశ్నలు (${tt})</button></div>
+    ${list.length?list.map(({q,i,a})=>`<div class="rv"><p class="q">${i+1}. ${esc(q.q)}</p>
+      <p class="a">మీ జవాబు: ${a===null?'<span class="r">ఇవ్వలేదు</span>':`<span class="${a===q.a?'g':'r'}">${'ABCD'[a]}) ${esc(q.o[a])}</span>`}</p>
+      ${a!==q.a?`<p class="a">సరైన జవాబు: <span class="g">${'ABCD'[q.a]}) ${esc(q.o[q.a])}</span></p>`:''}
+      <p class="e">${esc(q.e)}</p></div>`).join(''):'<p>అన్నీ సరైనవే. అద్భుతం!</p>'}
+    <div class="btns"><button class="pri" id="again">కొత్త ప్రశ్నలతో మళ్ళీ</button><button class="ghost" id="hm">హోమ్</button><button class="ghost" id="pr">ప్రింట్</button></div>
+  </section>`;
+  app.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{reviewFilter=b.dataset.f;renderResult();});
+  document.getElementById('again').onclick=()=>{cfg=Object.assign(cfg,S.cfg);start();};
+  document.getElementById('hm').onclick=renderHome;
+  document.getElementById('pr').onclick=()=>window.print();
+  window.scrollTo({top:0});
+}
+
+/* ================= కీబోర్డ్ / రిమోట్ ================= */
+document.addEventListener('keydown',e=>{
+  if(screen!=='quiz'||e.target.tagName==='INPUT')return;
+  const k=e.key.toLowerCase();const map={'1':0,'2':1,'3':2,'4':3,a:0,b:1,c:2,d:3};
+  if(k in map){choose(map[k]);e.preventDefault();}
+  else if(e.key==='ArrowRight'||(e.key==='Enter'&&e.target===document.body)){if(S.cur<S.qs.length-1)go(1);e.preventDefault();}
+  else if(e.key==='ArrowLeft'){go(-1);e.preventDefault();}
+});
+
+if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=()=>{};
+syncTts();
+renderHome();
+</script>
+</body>
+</html>
